@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.boot.employee.model.Employee;
 import com.boot.employee.repository.EmployeeRepository;
 
-@RestController
-@RequestMapping("/Employees")
-public class EmployeeController {
+@Controller
+@RequestMapping("/Emp")
+public class EmployeeAppController {
 
 	@Autowired
 	private EmployeeRepository repository;
@@ -45,7 +45,7 @@ public class EmployeeController {
 	@PostMapping
 	public String addEmployee(Employee employee) {
 		repository.save(employee);
-		return "redirect:/app/home";
+		return "redirect:/app/listemp";
 		
 	}
 	
