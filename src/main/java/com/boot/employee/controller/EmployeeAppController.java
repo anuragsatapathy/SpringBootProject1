@@ -24,22 +24,6 @@ public class EmployeeAppController {
 	@Autowired
 	private EmployeeRepository repository;
 	
-	//get all employees
-	@GetMapping
-	public List<Employee> getAllEmployees(){
-		
-		return repository.findAll();
-		
-	}
-	
-	//add an Employee
-	
-	/*
-	 * @PostMapping public Employee addEmployee(@RequestBody Employee employee) {
-	 * return repository.save(employee);
-	 * 
-	 * }
-	 */
 	
 	//@PostMapping("/saveemp")
 	@PostMapping
@@ -49,28 +33,5 @@ public class EmployeeAppController {
 		
 	}
 	
-	//get employee by id
 	
-	@GetMapping("/{id}")
-	public Optional<Employee> getEmployee(@PathVariable Integer id){
-		return repository.findById(id);
-		
-	}
-	
-	//update student by id 
-	
-	@PutMapping("/{id}")
-	public Employee updateEmployee(@PathVariable Integer id, @RequestBody Employee Employeedetails) {
-		Employee employee = repository.findById(id).orElseThrow();
-		employee.setName(Employeedetails.getName());
-		employee.setEmail(Employeedetails.getEmail());
-		return repository.save(employee);
-		
-	}
-	
-	//delete student by id 
-	@DeleteMapping("/{id}")
-	public void deleteEmployee(@PathVariable Integer id) {
-		repository.deleteById(id);
-	}
 }

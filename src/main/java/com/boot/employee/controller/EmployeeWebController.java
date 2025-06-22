@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.boot.employee.model.Employee;
@@ -59,7 +60,20 @@ public class EmployeeWebController {
 		
 	}
 	
+	@PostMapping("/updateemp")
+	public String updateEmployee(Employee employee) {
+		repository.save(employee);
+		return "redirect:/app/listemp";
 	
+	}
+	
+	@GetMapping("/deleteemp/{id}")
+	public String deleteEmployee(@PathVariable Integer id) {
+		repository.deleteById(id);
+		return "redirect:/app/listemp";
+		
+		
+	}
 	
 	
 	
